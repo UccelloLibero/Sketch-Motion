@@ -1,7 +1,7 @@
 # Sketch Motion
 
 ## **About the Project**
-** Sketch Motion** is a collaborative project aimed at building an intuitive web app that allows users to:
+**Sketch Motion** is a collaborative project aimed at building an intuitive web app that allows users to:
 - Draw directly on an interactive canvas.
 - Upload their own artwork.
 - Animate their creations with simple, engaging effects like movement, scaling, and rotations. 
