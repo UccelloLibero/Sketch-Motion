@@ -64,8 +64,8 @@ This project is in its early stages of development.
 ### Phase 3: Model Training
 - [ ] Collect datasets (e.g., [Quick, Draw!](https://quickdraw.withgoogle.com/data) dataset, publicly available drawing datasets).
 - [ ] Integrate object recognition models like [YOLO](https://pytorch.org/hub/ultralytics_yolov5/) or [OpenPose](https://github.com/Hzzone/pytorch-openpose) to analyze drawings.
-- Train or fine-tune models (e.g., [Pix2Pix](https://github.com/joshmurr/cci-auto-pix2pix) for auto-animation, [Neural Style Transfer](https://pytorch.org/tutorials/advanced/neural_style_tutorial.html) for artistic effects).
-- Add Ai suggestions and auto-animation features.
+- [ ] Train or fine-tune models (e.g., [Pix2Pix](https://github.com/joshmurr/cci-auto-pix2pix) for auto-animation, [Neural Style Transfer](https://pytorch.org/tutorials/advanced/neural_style_tutorial.html) for artistic effects).
+- [ ] Add Ai suggestions and auto-animation features.
 
 ### Phase 3: User Accounts
 - [ ] Create backend endpoints for user registration and data saving.
