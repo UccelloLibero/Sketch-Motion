@@ -71,6 +71,21 @@ header .btn:hover, #cta .btn:hover {
   background-color: #FBFCFF;
 }
 
+/* How It Works Section Icons */
+.step-icon {
+  width: 80px; 
+  height: 80px;
+  margin-bottom: 15px; /* Add spacing below the icon */
+}
+
+@media (max-width: 768px) {
+  .step-icon {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+
 /* Footer */
 footer {
   background-color: #212121;
