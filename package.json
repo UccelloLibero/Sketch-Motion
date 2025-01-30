@@ -1,0 +1,32 @@
+{
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test"
+  },
+  "name": "sketch-motion",
+  "version": "1.0.0",
+  "description": "## **About the Project** **Sketch Motion** is a collaborative project aimed at building an intuitive web app that allows users to: - Draw directly on an interactive canvas. - Upload their own artwork. - Animate their creations with simple, engaging effects like movement, scaling, and rotations.  - Use AI tools for animations and suggestions.",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-scripts": "^5.0.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

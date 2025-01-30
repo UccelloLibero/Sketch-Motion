@@ -3,9 +3,9 @@ import heroImage from "../assets/images/hero-animation.gif";
 
 const Hero = () => {
     return (
-        <header className="bg-primary text-white text-center py-5">
+        <header className="text-white text-center py-5">
             <div className="container">
-                <img src="{heroImage}" alt="Sketch Motion Animation Example" className="img-fluid w-100 heroImage"/>
+                <img src={heroImage} alt="Sketch Motion Animation Example" className="img-fluid w-100 heroImage"/>
                 <h1 className="display-4 fw-bold mt-4">Unleash Your Creativity with Sketch Motion</h1>
                 <p className="lead">
                     Sketch Motion allows you to transform your drawings into captivating animations effortlessly.
