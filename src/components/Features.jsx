@@ -6,7 +6,7 @@ import heroAnimation from "../assets/images/hero-animation.gif";
 const Features = () => {
     return (
         <section id="features" className="py-5">
-            <div className="container text-center">
+            <div className="container text-left">
                 <div className="row">
                     <div className="col-lg-4">
                         <img src={drawingTool} alt="Drawing Tool" className="img-fluid mb-3" />

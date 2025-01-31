@@ -1,7 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router";
 import heroImage from "../assets/images/hero-animation.gif";
 
 const Hero = () => {
+    const navigate = useNavigate();
+
     return (
         <header className="text-white text-center py-5">
             <div className="container">
@@ -11,7 +14,7 @@ const Hero = () => {
                     Sketch Motion allows you to transform your drawings into captivating animations effortlessly.
                     Whether you're a hobbyinst or a seasonsed creator, our platform makes animation easy and fun.
                 </p>
-                <a href="#create" className="btn btn-light me-2">Get Started</a>
+                <button className="btn btn-light me-2" onClick={() => navigate("/sketch-motion")}>Get Started</button>
                 <a href="#learn" className="btn learn">Learn More</a>
             </div>
         </header>
