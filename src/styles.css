@@ -78,18 +78,54 @@ header .btn:hover, #cta .btn:hover {
   margin-bottom: 15px; /* Add spacing below the icon */
 }
 
-@media (max-width: 768px) {
-  .step-icon {
-    width: 60px;
-    height: 60px;
-  }
+/* Get started overlay */
+.overlay {
+  position: absolute; /* Covers only the drawing area */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent black */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 10; /* Ensure it's above the canvas */
+  border-radius: 10px; /* Optional: Rounded edges */
 }
 
+.overlay button,
+.overlay label {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+}
+
+/* Make the stage responsive */
+.stage-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* Sidebar (tool panel) */
+.tool-panel {
+  width: 200px;
+  background: #f8f9fa;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
 
 /* Footer */
 footer {
   background-color: #212121;
   color: white;
+  margin-top: auto;
 }
 
 /* Responsive Styling */
@@ -104,5 +140,57 @@ footer {
 
   header p {
     font-size: 1rem;
+  }
+  .step-icon {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* Main layout: Desktop - Sidebar, Mobile - Top Bar */
+@media (min-width: 768px) {
+  .main-container {
+      display: flex;
+      flex-direction: row; /* Sidebar on the left, content on the right */
+      height: 100vh;
+  }
+  .tool-panel {
+      width: 200px;
+      background: #f8f9fa;
+      padding: 10px;
+      border-right: 1px solid #ddd;
+  }
+  .stage-container {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  }
+}
+
+/* Mobile View - Stack the tool panel on top */
+@media (max-width: 767px) {
+  .main-container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+  }
+  .tool-panel {
+      width: 100%;
+      padding: 10px;
+      background: #f8f9fa;
+      border-bottom: 1px solid #ddd; /* Separate from canvas */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+  }
+  .stage-container {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
   }
 }
