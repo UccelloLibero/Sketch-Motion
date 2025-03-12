@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { Stage, Layer, Line, Image } from "react-konva";
 import useImage from "use-image"; // Import useImage hook from react-konva for loading images
 import { useNavigate } from "react-router";
+import { FaUndo, FaRedo, FaTrash } from "react-icons/fa";
 
 const SketchMotionFlow = () => {
     const [step, setStep] = useState(1); // Track current step (1, 2 or 3)
@@ -10,6 +11,7 @@ const SketchMotionFlow = () => {
     const [isDrawing, setIsDrawing] = useState(false); // Track drawing state
     const [uploadedImage, setUploadedImage] = useState(null); // Store uploaded image
     const [strokeWidth, setStrokeWidth] = useState(3); // Default stroke width
+    const [strokeColor, setStrokeColor] = useState("#000000"); // Default stroke color
     const [showOverlay, setShowOverlay] = useState(true); // Show overlay before drawing starts
     const stageRef = useRef(null); // Create reference to Konva stage
     const navigate = useNavigate(); // Initialize navigate function
@@ -25,22 +27,30 @@ const SketchMotionFlow = () => {
         return stage.getPointerPosition() || { x: point.clientX, y: point.clientY };
     };
 
-    // Start drawing 
+    // Function to handle drawing start 
     const handleStart = (e) => {
         e.evt.preventDefault(); // Prevent scrolling on touch devices
         setIsDrawing(true); // Set drawing state to true
         const { x, y } = getPointerPosition(e); // Get pointer position
-        setLines([...lines, { points: [x, y], strokeWidth: parseInt(strokeWidth) }]); // Add new line to lines array
+        setLines([...lines, { 
+            points: [x, y], 
+            strokeWidth: parseInt(strokeWidth, 10), 
+            strokeColor: strokeColor || "#000000" 
+        }]); // Add new line to lines array
     };
 
-    // Drawing movement
+    // Function to update the last line with new points
     const handleMove = (e) => {
         if (!isDrawing) return; // Exit if not drawing
         const { x, y } = getPointerPosition(e); // Get pointer position
+
         setLines((previousLines) => {
-            const lastLine = previousLines[previousLines.length - 1]; // Get last line
-            lastLine.points = [...lastLine.points, x, y]; // Add new points
-            return [...previousLines];
+            const updatedLines = [...previousLines]; // Copy previous lines
+            updatedLines[updatedLines.length - 1] = { // Update last line
+                ...updatedLines[updatedLines.length - 1],
+                points: [...updatedLines[updatedLines.length - 1].points, x, y]
+            };
+            return updatedLines; // Return updated lines
         });
     };
 
@@ -99,10 +109,12 @@ const SketchMotionFlow = () => {
                 <div className="p-3 bg-light border-end tool-panel" style={{ width: "200px" }}>
                     <h4>Tools</h4>
                     <label>Stroke Thinkness:</label>
-                    <input type="range" min="1" max="10" value={strokeWidth} onChange={(e) => setStrokeWidth(e.target.value)} className="form-rnage" />
-                    <button className="btn btn-secondary w-100 my-2" onClick={handleUndo}>Undo</button>
-                    <button className="btn btn-secondary w-100 my-2" onClick={handleRedo}>Redo</button>
-                    <button className="btn btn-danger w-100" onClick={clearCanvas}>Clear</button>
+                    <input type="range" min="1" max="10" value={strokeWidth} onChange={(e) => setStrokeWidth(e.target.value)} className="form-range" />
+                    <label>Stroke Color:</label>
+                    <input type="color" value={strokeColor} onChange={(e) => setStrokeColor(e.target.value)} className="form-control form-control-color" />
+                    <button className="btn btn-secondary w-100 my-2" onClick={handleUndo}> <FaUndo/> Undo</button>
+                    <button className="btn btn-secondary w-100 my-2" onClick={handleRedo}> <FaRedo /> Redo</button>
+                    <button className="btn btn-danger w-100" onClick={clearCanvas}> <FaTrash /> Clear</button>
                 </div>
 
                 {/* Main drawing section */}
@@ -141,7 +153,7 @@ const SketchMotionFlow = () => {
                                     {/* Upload image input */}
                                     <Image image={image} width={500} height={400} />
                                     {lines.map((line, i) => (
-                                        <Line key={i} points={line.points} stroke="black" strokeWidth={3} tension={0.5} lineCap="round" />
+                                        <Line key={i} points={line.points} stroke={line.strokeColor} strokeWidth={line.strokeWidth} tension={0.5} lineCap="round" />
                                     ))}
                                 </Layer>
                             </Stage>
